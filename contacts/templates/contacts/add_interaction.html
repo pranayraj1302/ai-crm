@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="max-w-xl mx-auto">
+
+    <h2 class="text-2xl font-bold mb-6">
+        Add Interaction for {{ contact.name }}
+    </h2>
+
+    <div class="bg-white p-6 rounded-xl shadow">
+
+        <form method="POST" class="space-y-4">
+            {% csrf_token %}
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Interaction Type</label>
+                <select name="interaction_type"
+                        class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="call">Call</option>
+                    <option value="email">Email</option>
+                    <option value="meeting">Meeting</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium mb-1">Notes</label>
+                <textarea name="notes" rows="4"
+                          class="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                          placeholder="What happened in this interaction?"></textarea>
+            </div>
+
+            <div class="flex justify-between items-center pt-4">
+                <a href="/{{ contact.id }}/" class="text-gray-500 hover:text-black">
+                    ← Back
+                </a>
+
+                <button type="submit"
+                        class="bg-green-500 text-white px-5 py-2 rounded hover:bg-green-600">
+                    Save Interaction
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

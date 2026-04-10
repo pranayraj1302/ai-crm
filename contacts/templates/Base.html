@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI CRM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex">
+
+    <!-- Sidebar -->
+    <div class="w-64 bg-black text-white min-h-screen p-5">
+        <h1 class="text-xl font-bold mb-6">Abide AI CRM</h1>
+
+        <nav class="space-y-3">
+            <a href="/" class="block hover:bg-gray-800 p-2 rounded">Dashboard</a>
+            <a href="/add/" class="block hover:bg-gray-800 p-2 rounded">Add Contact</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6">
+
+        <!-- Topbar -->
+        <div class="bg-white p-4 rounded shadow mb-6 flex justify-between">
+            <h2 class="font-semibold">Dashboard</h2>
+            <span class="text-gray-500">Welcome, Pranay</span>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</body>
+</html>
