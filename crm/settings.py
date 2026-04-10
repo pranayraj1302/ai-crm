@@ -130,3 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'

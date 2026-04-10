@@ -2,12 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Contact, Interaction
 from django.utils import timezone
 from .AI import generate_followup_email
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def contact_list(request):
     contacts = Contact.objects.all().order_by('-created_at')
     return render(request, 'contacts/contact_list.html', {'contacts': contacts})
 
 
+@login_required
 def add_contact(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -28,6 +31,7 @@ def add_contact(request):
     return render(request, 'contacts/add_contact.html')
 
 
+@login_required
 def contact_detail(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     interactions = contact.interactions.all()
@@ -38,6 +42,7 @@ def contact_detail(request, pk):
     })
 
 
+@login_required
 def add_interaction(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
 
@@ -57,6 +62,7 @@ def add_interaction(request, pk):
     return render(request, 'contacts/add_interaction.html', {'contact': contact})
 
 
+@login_required
 def generate_email(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     interactions = contact.interactions.all()
